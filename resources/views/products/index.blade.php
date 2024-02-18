@@ -6,11 +6,11 @@
                 <h2>Product CRUD</h2>
             </div>
             <div class="pull-right">
-                <a href="" class="btn btn-success" href="{{route('products.create')}}">New Product</a>
+                <a class="btn btn-success" href="{{route('products.create')}}">New Product</a>
             </div>
         </div>
     </div>
-    @if ($message = SESSION::get('success'))
+    @if ($message = session()->get('success'))
         <div class="alert alert-success">
             <p>{{$message}}</p>
         </div>
@@ -29,10 +29,11 @@
                 <td>{{$product->name}}</td>
                 <td>{{$product->detail}}</td>
                 <td>
-                    <form action="{{route('products.destroy')}}" method="POST">
-                        <a href="{{route('products.show')}}" class="btn btn-info">show</a>
-                        <a href="{{route('products.edit')}}" class="btn btn-primary">edit</a>
+                    <form action="{{route('products.destroy',$product)}}" method="POST">
+                        <a href="{{route('products.show',$product)}}" class="btn btn-info">show</a>
+                        <a href="{{route('products.edit',$product)}}" class="btn btn-primary">edit</a>
                         @csrf
+                        {{ method_field('DELETE') }}
                         <button type="submit" class="btn btn-danger">Delete</button>
                     </form>
                 </td>

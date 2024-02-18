@@ -44,7 +44,7 @@ class ProductController extends Controller
             'detail'=>'required',
         ]);
         Product::create($request->all());
-        return redirect()->route('product.index')->with('success',"Product added!");
+        return redirect()->route('products.index')->with('success',"Product added!");
     }
 
     /**
@@ -56,7 +56,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         //
-        return view('product.show',compact('product'));
+        return view('products.show',compact('product'));
     }
 
     /**
@@ -68,7 +68,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         //
-        return view('product.edit',compact('product'));
+        return view('products.edit',compact('product'));
     }
 
     /**
